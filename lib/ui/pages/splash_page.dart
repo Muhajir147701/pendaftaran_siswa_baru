@@ -45,8 +45,11 @@ class SplashPage extends StatelessWidget {
                       fontSize: 18, fontWeight: FontWeight.w600),
                 ),
                 color: accentColor1,
-                onPressed: () {
-                  AuthServices.signIn("damad@gmail.com", "123456");
+                onPressed: () async {
+                  AuthServices.signIn("admin@gmail.com", "123456");
+                  context
+                      .read<PageBloc>()
+                      .add(GoToAddSiswaPage(SiswaRegistration()));
                 },
               ),
             ),

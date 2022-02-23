@@ -77,6 +77,18 @@ class _SiswaDetailPageState extends State<SiswaDetailPage> {
                           SizedBox(
                             height: 20,
                           ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              MiniButton('KK', siswa.sktm, () {}, Colors.amber),
+                              MiniButton('KIP', siswa.kip, () {}, Colors.red),
+                              MiniButton(
+                                  'Rapor', siswa.ketLain, () {}, Colors.blue),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
                           SizedBox(
                             height: 45,
                             width: 200,
@@ -114,7 +126,7 @@ class _SiswaDetailPageState extends State<SiswaDetailPage> {
             child: Container(
               height: 45,
               width: 250,
-              margin: EdgeInsets.only(bottom: 50, left: 60),
+              margin: EdgeInsets.only(bottom: 50, left: 10),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.amber.withOpacity(0.9)),
@@ -135,15 +147,18 @@ class _SiswaDetailPageState extends State<SiswaDetailPage> {
                   SizedBox(
                     width: 5,
                   ),
-                  Center(
-                      child: Text(
-                        
-                    siswa.nama.toUpperCase(),
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700),
-                  )),
+                  Container(
+                    width: 200,
+                    child: Center(
+                        child: Text(
+                      siswa.nama.toUpperCase(),
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700),
+                    )),
+                  ),
                 ],
               ),
             ),

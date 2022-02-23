@@ -52,16 +52,7 @@ class _MainPageState extends State<MainPage> {
               );
             }
           }),
-          actions: [
-            GestureDetector(
-                onTap: () {
-                  AuthServices.signOut();
-                },
-                child: Icon(
-                  Icons.close,
-                  color: Colors.red,
-                ))
-          ],
+          elevation: 0,
           backgroundColor: Colors.white,
         ),
         floatingActionButton: FloatingActionButton(
@@ -72,8 +63,6 @@ class _MainPageState extends State<MainPage> {
         ),
         body: PageView(
           children: [Coba1(), Coba2()],
-        )
-        
-        );
+        ));
   }
 }

@@ -39,7 +39,7 @@ class _SiswaPenerimaManfaatPageState extends State<SiswaPenerimaManfaatPage> {
                       child: Icon(Icons.arrow_back))),
               Center(
                 child: Text(
-                  "Informasi Penerima \nTunjangan Pemerintah",
+                  "Form Informasi \nTambahan Documen",
                   style: blackTextFont.copyWith(
                       fontSize: 20, fontWeight: FontWeight.w700),
                   textAlign: TextAlign.center,
@@ -72,11 +72,23 @@ class _SiswaPenerimaManfaatPageState extends State<SiswaPenerimaManfaatPage> {
                               border: Border.all(color: Colors.black)),
                           child: (sktm != null)
                               ? Image.file(sktm, fit: BoxFit.cover)
-                              : SizedBox(),
+                              : GestureDetector(
+                                  onTap: () async {
+                                    sktm = await getsImage();
+                                    setState(() {});
+                                  },
+                                  child: SizedBox(
+                                    child: Center(
+                                      child: Text(
+                                        'no Image',
+                                        style: greyTextFont,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                         ),
                         RaisedButton(
-                            child:
-                                Text((sktm != null) ? "Hapus" : "Upload SKTM"),
+                            child: Text((sktm != null) ? "Hapus" : "Upload KK"),
                             onPressed: () async {
                               if (sktm != null) {
                                 sktm = null;
@@ -101,7 +113,20 @@ class _SiswaPenerimaManfaatPageState extends State<SiswaPenerimaManfaatPage> {
                               border: Border.all(color: Colors.black)),
                           child: (kipFile != null)
                               ? Image.file(kipFile, fit: BoxFit.cover)
-                              : SizedBox(),
+                              : GestureDetector(
+                                  onTap: () async {
+                                    kipFile = await getsImage();
+                                    setState(() {});
+                                  },
+                                  child: SizedBox(
+                                    child: Center(
+                                      child: Text(
+                                        'no Image',
+                                        style: greyTextFont,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                         ),
                         RaisedButton(
                             child: Text(
@@ -135,29 +160,49 @@ class _SiswaPenerimaManfaatPageState extends State<SiswaPenerimaManfaatPage> {
                               ketLain,
                               fit: BoxFit.cover,
                             )
-                          : SizedBox(
-                              child: Center(
-                                child: Text('gambar belum terapload'),
+                          : GestureDetector(
+                              onTap: () async {
+                                ketLain = await getsImage();
+                                setState(() {});
+                              },
+                              child: SizedBox(
+                                child: Center(
+                                  child: Text(
+                                    'Tap to Add \nFrom Galery!',
+                                    style: greyTextFont,
+                                  ),
+                                ),
                               ),
                             ),
                     ),
-                    RaisedButton(
-                        child: Text(
-                          (ketLain != null) ? 'hapus' : "Upload Ket\nLain",
-                          textAlign: TextAlign.center,
-                        ),
-                        onPressed: () async {
-                          if (ketLain != null) {
-                            ketLain = null;
-                            setState(() {});
-                          } else {
-                            ketLain = await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => CameraPage()));
-                            setState(() {});
-                          }
-                        }),
+                    Container(
+                      width: 120,
+                      child: RaisedButton(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.camera),
+                              Text(
+                                (ketLain != null)
+                                    ? 'Hapus'
+                                    : "halaman I\n Raport",
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                          onPressed: () async {
+                            if (ketLain != null) {
+                              ketLain = null;
+                              setState(() {});
+                            } else {
+                              ketLain = await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CameraPage()));
+                              setState(() {});
+                            }
+                          }),
+                    ),
                   ],
                 ),
                 SizedBox(height: 40),
@@ -165,12 +210,12 @@ class _SiswaPenerimaManfaatPageState extends State<SiswaPenerimaManfaatPage> {
                     heroTag: 'pindah dan simpan',
                     child: Icon(Icons.arrow_forward),
                     onPressed: () {
-                       if (fotoSiswa != null) {
-                            uploadImage(fotoSiswa).then((downloadURL) {
-                              fotoSiswa = null;
-                              widget.siswaRegistration.foto = downloadURL;
-                            });
-                          }
+                      if (fotoSiswa != null) {
+                        uploadImage(fotoSiswa).then((downloadURL) {
+                          fotoSiswa = null;
+                          widget.siswaRegistration.foto = downloadURL;
+                        });
+                      }
                       if (kipFile != null) {
                         uploadImage(kipFile).then((downloadURL) {
                           kipFile = null;
@@ -184,7 +229,7 @@ class _SiswaPenerimaManfaatPageState extends State<SiswaPenerimaManfaatPage> {
                         });
                       }
                       if (ketLain != null) {
-                        uploadImage(sktm).then((downloadURL2) {
+                        uploadImage(ketLain).then((downloadURL2) {
                           ketLain = null;
                           widget.siswaRegistration.ketlain = downloadURL2;
                         });
