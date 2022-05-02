@@ -1,4 +1,4 @@
-package com.example.pendaftaran_siswa_baru
+package com.ajir.pendaftaran_siswa_baru
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -25,6 +25,7 @@ dependencies:
   camera: ^0.5.8+11
   cloud_firestore: ^0.16.0
   cupertino_icons: ^1.0.0
+  # change_app_package_name: ^1.0.0
   email_validator: ^1.0.6
   equatable: ^1.2.5
   extension: ^0.1.1

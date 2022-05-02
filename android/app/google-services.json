@@ -7,6 +7,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:590171847786:android:d5b60a2b348be691b15e13",
+        "android_client_info": {
+          "package_name": "com.ajir.pendaftaran_siswa_baru"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "590171847786-2j4e9mo9eoq1h45e7amq5is6nvbrfijp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0kJVoopDt3TD4388O7DV4RRWTBBShbvI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "590171847786-2j4e9mo9eoq1h45e7amq5is6nvbrfijp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:590171847786:android:a0e5f5f9ddf90d72b15e13",
         "android_client_info": {
           "package_name": "com.example.pendaftaran_siswa_baru"
